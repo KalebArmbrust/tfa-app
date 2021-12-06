@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/tfa-app/static/css/main.e78fbfcd.chunk.css",
+    "main.js": "/tfa-app/static/js/main.c82a4d88.chunk.js",
+    "main.js.map": "/tfa-app/static/js/main.c82a4d88.chunk.js.map",
+    "runtime-main.js": "/tfa-app/static/js/runtime-main.8563a9ec.js",
+    "runtime-main.js.map": "/tfa-app/static/js/runtime-main.8563a9ec.js.map",
+    "static/js/2.00b61e13.chunk.js": "/tfa-app/static/js/2.00b61e13.chunk.js",
+    "static/js/2.00b61e13.chunk.js.map": "/tfa-app/static/js/2.00b61e13.chunk.js.map",
+    "static/js/3.0bece00e.chunk.js": "/tfa-app/static/js/3.0bece00e.chunk.js",
+    "static/js/3.0bece00e.chunk.js.map": "/tfa-app/static/js/3.0bece00e.chunk.js.map",
+    "index.html": "/tfa-app/index.html",
+    "static/css/main.e78fbfcd.chunk.css.map": "/tfa-app/static/css/main.e78fbfcd.chunk.css.map",
+    "static/js/2.00b61e13.chunk.js.LICENSE.txt": "/tfa-app/static/js/2.00b61e13.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/tfa-app/static/media/neon.b2cdfcbb.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8563a9ec.js",
+    "static/js/2.00b61e13.chunk.js",
+    "static/css/main.e78fbfcd.chunk.css",
+    "static/js/main.c82a4d88.chunk.js"
+  ]
+}
