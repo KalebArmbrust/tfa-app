@@ -1,12 +1,10 @@
 import './App.css';
+import React, { useState } from 'react';
 
 function App() {
-  const getCode = (e) => {
-    e.preventDefault();
-    document.getElementById('tfa').style.display = "flex";
-  }
-  const admit = (e) => {
-    e.preventDefault();
+  const [res, setRes] = useState('');
+
+  const admit = () => {
     const code = document.getElementById('tfa-input').value;
 
     var myHeaders = new Headers();
@@ -23,48 +21,57 @@ function App() {
 
     fetch("https://mock-2fa-api.azure-api.net/validation", requestOptions)
       .then(response => response.text())
-      .then(result => console.log(result))
+      .then(result => (console.log(result), setRes(result)))
       .catch(error => console.log('error', error));
 
-    
-
-    // if (res.PromiseState === "fulfilled") {
-    //   document.getElementById('accessGranted').style.display = "flex";
-    // } else {
-    //   document.getElementById('accessDenied').style.display = "flex";
-    // };
-    
+      // const text = document.getElementById('tfa-input').value;
+      // const tfaForm = document.getElementById('tfa');
+      //     if ( text.length === 6 ) {
+      //       tfaForm.submit();
+      //   }
+      document.getElementById('body').style.display = "none";
   }
+
+  const tryAgain = () => {
+    document.getElementById('body').style.display = "flex";
+    document.getElementById('body').style.flexDirection = "column";
+    document.getElementById('accessDenied').style.display = "none";
+  }
+
+  const reset = () => {
+    document.getElementById('body').style.display = "flex";
+    document.getElementById('body').style.flexDirection = "column";
+    document.getElementById('accessGranted').style.display = "none";
+  }
+
+  if (res === "true") {
+    document.getElementById('accessGranted').style.display = "flex";
+    document.getElementById('accessDenied').style.display = "none";
+  } else if (res === "false") {
+    document.getElementById('accessDenied').style.display = "flex";
+    document.getElementById('accessGranted').style.display = "none";
+  };
+
 
   return (
     <div className="App">
-      <header className="header">
-        <p className="header-title">TFAwesome</p>
-      </header>
-      <div className="form-container">
-        <h2 className="form-title">Guild-Info</h2>
-        <form className="form">
-          <div className="form-dividers">
-            <label className="form-label">Name:</label>
-            <input className="form-input"></input>
+      <div className="body" id="body">
+        <h1 className="body-title">ENTER YOUR CODE...</h1>
+        <div className="tfa" id="tfa">
+          <input type="text" placeholder="__ __ __ __ __ __" className="tfa-input" id="tfa-input"></input>
+          <button className="tfa-button" onClick={admit}>ENTER</button>
+        </div>
+      </div>
+      <div className="admit">
+          <div className="accessGranted" id="accessGranted">
+            <h2>YOU MAY ENTER</h2>
+            <button className="tfa-button" onClick={reset}>RESET</button>
           </div>
-          <div className="form-dividers">
-            <label className="form-label">Code:</label>
-            <input className="form-input"></input>
+          <div className="accessDenied" id="accessDenied">
+            <h2>INCORRECT</h2>
+            <button className="tfa-button" onClick={tryAgain}>TRY AGAIN</button>
           </div>
-          <button onClick={getCode} className="form-button">Enter</button>
-        </form>
-      </div>
-      <div className="tfa" id="tfa">
-        <input placeholder="What's the Password...?" className="tfa-input" id="tfa-input"></input>
-        <button className="tfa-button" onClick={admit}>Enter</button>
-      </div>
-      <div className="accessGranted" id="accessGranted">
-        <h2>You may Enter</h2>
-      </div>
-      <div className="accessDenied" id="accessDenied">
-        <h2>Incorrect</h2>
-      </div>
+        </div>
     </div>
   );
 }
