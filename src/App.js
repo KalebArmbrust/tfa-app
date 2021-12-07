@@ -24,24 +24,21 @@ function App() {
       .then(result => (console.log(result), setRes(result)))
       .catch(error => console.log('error', error));
 
-      // const text = document.getElementById('tfa-input').value;
-      // const tfaForm = document.getElementById('tfa');
-      //     if ( text.length === 6 ) {
-      //       tfaForm.submit();
-      //   }
       document.getElementById('body').style.display = "none";
   }
-
+  
   const tryAgain = () => {
     document.getElementById('body').style.display = "flex";
     document.getElementById('body').style.flexDirection = "column";
     document.getElementById('accessDenied').style.display = "none";
+    document.getElementById('tfa-input').value = "";
   }
 
   const reset = () => {
     document.getElementById('body').style.display = "flex";
     document.getElementById('body').style.flexDirection = "column";
     document.getElementById('accessGranted').style.display = "none";
+    document.getElementById('tfa-input').value = "";
   }
 
   if (res === "true") {
@@ -51,7 +48,6 @@ function App() {
     document.getElementById('accessDenied').style.display = "flex";
     document.getElementById('accessGranted').style.display = "none";
   };
-
 
   return (
     <div className="App">
